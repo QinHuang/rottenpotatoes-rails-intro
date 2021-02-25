@@ -1,3 +1,3 @@
-https://polar-woodland-81995.herokuapp.com/movies?ratings%5BG%5D=1&ratings%5BPG-13%5D=1&ratings%5BR%5D=1&sort=release_date
+https://polar-woodland-81995.herokuapp.com/ 
 rvm use 2.6.4
 https://github.com/QinHuang/rottenpotatoes-rails-intro
