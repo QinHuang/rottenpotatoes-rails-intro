@@ -7,7 +7,27 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.all
+    @all_rankings = Movie.all_rankings
+    
+    if params[:ratings]
+      @rankings_to_display = params[:ratings].keys
+    else
+      @rankings_to_display = []
+    end 
+    @movies = Movie.on_rankings(@rankings_to_display)
+    
+    #part_1
+    order = params[:sort]
+    if order != nil
+      @rankings_to_display = params[:selected_ratings]
+      if order == 'date'
+        @movies, @date_class = Movie.on_rankings(params[:selected_ratings]).order(release_date: :asc), 'hilite bg-warning'
+      elsif order = 'title'
+        @movies, @title_class = Movie.on_rankings(params[:selected_ratings]).order(title: :asc), 'hilite bg-warning'
+      end
+    end
+    
+#    @movies = Movie.all
   end
 
   def new
